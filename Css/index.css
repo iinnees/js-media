@@ -1,0 +1,32 @@
+
+    #wrapper{
+        display:flex;
+        
+    }
+    #up{
+        flex:7 1 0;
+        
+    }
+
+    #bar{
+        flex:1 1 0;
+        
+       
+       
+    }
+    #media{
+     overflow : auto;
+     scroll-behavior: smooth;
+    }
+    #wrapper2{
+        display: flex;
+    }
+    fieldset {
+         background-color: #F7FAFB;
+         border: 2px solid #E0E6EA;
+         -moz-border-radius: 8px;
+         -webkit-border-radius: 8px;
+         border-radius: 8px;
+
+
+     }
