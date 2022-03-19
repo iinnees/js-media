@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="Css/index.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -14,8 +14,9 @@
             <div id="player">
                 <fieldset>
 
-                    <video id="videoPlayer" width="100%" controls autoplay>
-                        <source src="/video" type="video/mp4" />
+                    <video id="videoPlayer" id="vid"  width="100%" preload="none" controls autoplay>
+                        <source src="/video" id="source" type="video/mp4" />
+
                     </video>
                 </fieldset>
 
@@ -25,22 +26,32 @@
                     <div id="wrapper2">
                         <fieldset>
                             <div id="volume">
-                                <input type="range" min="1" max="100" value="50">
+                                <b>Video Player</b>
                             </div>
                         </fieldset>
                         <fieldset>
                             <div id="outils">
                                 <button value="Start" id="start" class="start">Start</button>
-                                <button value="Stop">Stop</button>
-                                <button value="Next">Next</button>
-                                <button value="Previous">Previous</button>
+                                <button value="Stop" id="resume">Resume</button>
+                                <button value="Stop" id="pause">Pause</button>
+                                <button value="Stop" id="stop">Stop</button>
+                                <button value="Next" id ="next">Next</button>
+                                <button value="Previous" id="previous">Previous</button>
                             </div>
                         </fieldset>
                         <fieldset>
                             <div id="add">
 
                                 <button value="Start">Add Video</button>
+                                
                                 <button value="Stop">Delete Video</button>
+
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div id="others">
+                                <label><b>Other tools :</b></label><a href=""><b>Image Viewer</b></a>
+
 
                             </div>
                         </fieldset>
@@ -51,10 +62,12 @@
         <div id="bar">
 
             <div id="media">
-                <fieldset>
 
-                    <p value="2.mp4" id="firstsong">2</p>
-                    <p value="1.mp4" id="secondsong">1</p>
+                <fieldset>
+                    <legend><b>Playlist</b></legend>
+                    <a id="songPlaying" style="visibility: hidden;"></a>
+                    <p href="" value="2.mp4" id="1">2</p>
+                    <p value="1.mp4" id="2">1</p>
                     <p>samir il wisf</p>
                     <p>The walk in our stars</p>
                     <p>Madonna</p>

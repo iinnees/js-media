@@ -1,7 +1,9 @@
 
+
     #wrapper{
         display:flex;
-        
+        position: inherit;
+        height: 700px;
     }
     #up{
         flex:7 1 0;
@@ -16,16 +18,132 @@
     #media{
      overflow : auto;
      scroll-behavior: smooth;
+    max-height: 114%;
+    margin-top: -4%;
     }
     #wrapper2{
         display: flex;
     }
     fieldset {
          background-color: #F7FAFB;
-         border: 2px solid #E0E6EA;
+         border: 2px solid lightgray;
          -moz-border-radius: 8px;
          -webkit-border-radius: 8px;
          border-radius: 8px;
 
 
      }
+     legend{
+         color: gray;
+         font-style: italic;
+         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+         text-align: center;
+        
+     }
+     #other{
+         justify-content: flex-end;
+     }
+     label{
+        color: gray;
+        font-style: italic;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       
+     }
+     a{
+        color: gray;
+        font-style: italic;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       
+     }
+     p{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px; 
+        font-size: 16px;
+     }
+     button{
+        background-color: gray;
+        color: white;
+        border: 2px solid lightgray;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px; 
+        font-size: 16px;
+     }
+     button:hover{
+        background-color:cadetblue;
+      }
+      
+      button:focus{
+        background-color:cadetblue;
+      }
+      a:hover{
+        color:cadetblue;
+      }
+      
+      a:focus{
+        color:cadetblue;
+      }
+      p:hover{
+        color:cadetblue;
+      }
+      
+      p:focus{
+        color:cadetblue;
+      }
+      b{
+        color: gray;
+        font-style: italic;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+      i{
+        color: cadetblue;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;
+      }
+      .overlay:target {
+        visibility: visible;
+        opacity: 1;
+      }
+      .popup {
+        margin: 70px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        width: 30%;
+        position: relative;
+        transition: all 5s ease-in-out;
+      }
+      
+      .popup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+      }
+      .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+      }
+      .popup .close:hover {
+        color: #06D85F;
+      }
+      .popup .content {
+        max-height: 30%;
+        overflow: auto;
+      }
