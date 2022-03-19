@@ -3,32 +3,85 @@
     <head>
         <meta charset="utf-8">
         <title>Images player</title>
-        <!--<link rel="stylesheet" href="Css/image.css">-->
+        <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <!--  <link rel="stylesheet" href="Css/image.css">-->
 
     </head>
     <style>
         body{
-            background-color: black;
+            background-image: url("images/fond_cor.png");
             }
         #canvas {
-            width: 600px;
-            height: 600px;
-            background-color: rgb(174, 96, 177);
+            width: 550px;
+            height: 500px;
+            background-color: rgb(189, 136, 22);
+            border-radius: 5%;
+            margin-left: 400px;
+            margin-top: 80px;
             }
-        img{
-            width: 600px;
-            height: 600px;
-        }    
+        #imgId{
+            width: 540px;
+            height: 490px;
+            border-radius: 5%;
+            text-align:center;
+            padding-top: 5px;
+            margin:auto;
+            margin-top: 5px;
+            display:flex;
+
+        }   
+        .button{
+            display: inline-flex;
+            height: 45px;
+            width: 45px;
+            border-radius: 30px;
+            padding: 0;
+            background: white;
+            outline: none;
+            border: none;
+            overflow: hidden;
+            font-family: 'Quicksand',sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+       
+            
+        } 
+        .button:hover{
+            background:rgb(90, 88, 88) ;
+        }
+        .button:active{
+            background: rgb(189, 136, 22);;
+        }
+        .button_icon{
+            align-items: center;
+            padding: 8px;
+            background-color: rgba(43, 33, 13, 0.253);;
+            font-size: 1.8em;
+        }
+        #next{
+            margin-right: 235px;
+            margin-left: 500px;
+            margin-top: 5px;
+
+        }
+        #back{
+            margin-top: 5px;
+
+        }
+
+
     </style>
     <body>
         <div class="slider">
             <div class="slides">
             
                 <div id="canvas">
-                   <img src= "" id="imgId">
+                  <img src= "" id="imgId">
                    <!--<img src="images/3.jpg" alt="">-->
-                    
+        
                 </div>
+                
                 
              
 
@@ -37,15 +90,24 @@
                 <!--<input type="button" value="next">
                 <input type="button" value="back">
                  -->
-                <button value="Next" id="next" >Next</button>
-                <button value="Back" id="back" >Back</button>
+                <button value="Next" id="next" class="button">
+                    <span class="button_icon">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </span>
+                </button>
+                <button value="Back" id="back" class="button">
+                    <span class="button_icon">
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </span>
+                    
+                </button>
                
             </div>
-            <div class="navigation-automatique">
+            <!--<div class="navigation-automatique">
                 <button value="Start" id="start" >Start</button>
                 <button value="Stop" id="stop" >Stop</button>
                
-            </div>
+            </div>-->
 
         </div>
 
@@ -120,7 +182,7 @@
                     console.log(new_src)
                     document.getElementById("imgId" ).src = new_src;
                    
-                //On affiche chaque image pendant 2s
+                
                 }
             }
 
