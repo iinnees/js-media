@@ -7,10 +7,12 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 path = require('path');
 util = require('util')
+const bodyParser = require('body-parser');
 
 
 
 
+app.use(bodyParser.urlencoded({ extended: true }));
 var sock = io.sockets.on('connection', function (socket) {
 
   socket.on('title', (arg) => {
@@ -43,10 +45,24 @@ var sock = io.sockets.on('connection', function (socket) {
 });
 });
 
+
+
+app.post('/file',(req,res)=>{
+  res.sendFile(__dirname + '/index.html');
+  console.log(req.body.name)
+  console.log(req.body.location)
+   
+  fs.copyFile(req.body.location, './video/'+req.body.name +'.mp4', (err) => {
+    if (err) throw err;
+      console.log('source.txt was copied to destination.txt');
+   });
+  
+});
+
 app.use(express.static(path.join(__dirname, '')));
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
+  
 });
 
 console.log(videoUrl);

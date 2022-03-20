@@ -42,8 +42,40 @@
                         <fieldset>
                             <div id="add">
 
-                                <button value="Start">Add Video</button>
-                                
+                                <button value="Start" id="add" >Add Video</button>
+                               <!--Pop up de l'ajout -->
+                                <div id="myModal" class="modal">
+
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                      <span id="close" class="close">&times;</span>
+                                      <center>
+                                      <fieldset>
+                                          <legend>Add a Video</legend>
+                                          <form action="/file" method=post> 
+                                          <table>
+                                              <tr>
+                                                  <td>Name :</td>
+                                                  <td><input type="text" id="name" name="name"></td>
+                                              </tr>
+                                              <tr>
+                                                <td><label id="label-file">Path :</label></td>
+                                                <td><input type="file" id="location" name="location"></td>
+                                            </tr>
+                                          </table>
+                                          <br>
+                                          
+                                          
+                                          <input type="submit" value="Submit">
+                                          <input type="reset" value="Reset">
+                                            
+                                        </form>
+                                      </fieldset>
+                                    </center>
+                                    </div>
+                                  
+                                  </div>
+                                   <!--******************-->
                                 <button value="Stop">Delete Video</button>
 
                             </div>
