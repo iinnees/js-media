@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Editor </title>
+
+    </head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+        }
+        body{
+            background-image: url("images/fond_cor.png");
+        }
+        .wrapper{
+            width: 55vw;
+            min-height:50vmin;
+            padding: 40px 30px;
+            background-color: rgba(189, 136, 22, 0.664);
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 600px;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px black;
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+ 
+        }
+        .editor{
+            min-height: 35vmin;
+            display: flex;
+            flex-direction: column; 
+
+        }
+        .editor label{
+            font-size: 2.8vmin;
+            color: rgb(4, 9, 58);
+            font-weight: 400;
+
+        }
+        .editor input[type="range"]{
+            display: block;
+            width: 100%;
+            position: relative;
+            margin-top: 5px;
+        
+        }
+        .result{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            grid-gap: 20px;
+
+        }
+        .result img{
+            display: block;
+            position: relative;
+            max-width: calc(100%-4vmin);
+            max-height: 45vmin;
+            margin: auto;
+        }
+
+
+        @media screen and (maw-width){
+            .wrapper{
+                width: 95vw;
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+                gap: 10px;
+            }
+            .editor{
+                grid-row: 2;
+
+            }
+         
+        }
+
+
+    </style>
+    <body>
+        <div class="wrapper">
+            <div class="editor">
+                <div class="filter" id="filter">
+                    <label for="blur">Blur</label>
+                    <input type="range" min="0" max="200" value="0" step="0.1"
+                    id="blur">
+                </div>
+                <div class="filter" id="filter">
+                    <label for="contrast">Contrast</label>
+                    <input type="range" min="0" max="200" value="100" id="contrast">
+                </div>
+                <div class="filter" id="filter">
+                    <label for="hue-rotate">Hue-rotate</label>
+                    <input type="range" min="0" max="360" value="0" id="hue-rotate">
+                </div> 
+                <div class="filter" id="filter">
+                    <label for="sepia">Sepia</label>
+                    <input type="range" min="0" max="100" value="0" id="sepia">
+                </div>
+                <div class="result">
+                    
+                   <!-- <canvas class=" image-container" id="canvas1">
+                        <img src="images/2.jpg" id="imgId">
+                    </canvas>-->
+                    <figure class="image-container">
+                        <img src="images/2.jpg" id="imgId">
+                    </figure>
+                   
+                    
+                </div>
+            </div>
+        </div>
+        <script>
+            /*var canvas= document.getElementById('canvas1')
+            var contexte= canvas.getContext('2d')
+             */
+
+            let filterA=document.getElementById("blur")
+            let filterB=document.getElementById("contrast")
+            let filterC=document.getElementById("hue-rotate")
+            let filterD=document.getElementById("sepia")
+
+            let image = document.getElementById("imgId")
+            console.log(image)
+           /* image.addEventListener('load',affiche)
+            function affiche(){
+            contexte.drawImage(image, 70,25,150, 150)
+            }*/
+
+            let sliders = document.querySelectorAll("input");
+            console.log(sliders)
+            sliders.forEach(slider =>{
+                slider.addEventListener('input', addFilter);
+                console.log("dans foreach")
+            })
+            function addFilter(){
+                
+                image.style.filter =`blur(${filterA.value}px) contrast(${filterB.value}%) hue-rotate(${filterC.value}deg) sepia(${filterD.value}%)`;
+                console.log(image.style.filter);
+                console.log("dans la fonction")
+            }
+
+
+
+           
+            
+            
+            
+            
+            
+            /*sliders.forEach(slider =>{
+                slider.addEventListener("input", addFilter);
+            });
+
+            function addFilter(){
+                image.style.filter =`blur(${filterA.value}px) contrast(${filterB.value}%) hue-rotate(${filterC.value}deg) sepia(${filterD.value}%)`;
+                console.log(image.style.filter);
+            }*/
+
+
+        </script>
+    </body>
+</html>
