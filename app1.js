@@ -14,7 +14,6 @@ io.sockets.on('connection', function (socket) {
     socket.emit('hello', { 'this': 'is my data' });
     var im =getImagesFromDir(path.join(__dirname,'images'))
     var length =im.length
-    //console.log(length)
     socket.emit('length',length)
     socket.on('nb', (arg) => {
         console.log('recieved : ' + arg)
@@ -22,9 +21,6 @@ io.sockets.on('connection', function (socket) {
         console.log(number+'a change')
 
         var img=path.join(__dirname,'images',im[number])
-        //console.log("1er ele de la liste "+im[0])
-        //console.log("dernier ele de la liste"+im[8])
-        //console.log("im1:"+im[1])
         var img_src ="images/"+im[number]
         console.log(img_src)
         socket.emit('src',img_src) 
@@ -37,32 +33,26 @@ io.sockets.on('connection', function (socket) {
 
     })
 
+    socket.on('save', (arg) => {
+        console.log('recieved : ' + arg)
+        saveImageToDisk(arg,"images/"+Date.now()+".png")
+
+    })
+
   });
 
 
 app.use('/images', express.static('images'));
 
-/*
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/image_player.html');
-  });
-
-app.get('/images', function (req, res) {  
-  
-})
-*/
-
 app.get('/',function(req,res){  
     res.setHeader('content-Type', 'text/html');
     console.log(img_src)
-    fs.readFile('./image_player.html','utf-8',(err, data) => {
+    fs.readFile('./image_player_essai.html','utf-8',(err, data) => {
         if(err){
             console.log(err);
             res.end();
         }else {
             console.log(img_src)
-            //data =data.replace('{{image_url}}',img_src)
-            //res.write(data);
             res.end(data);
         }
     })
@@ -78,6 +68,20 @@ function getImagesFromDir(dirPath){
     return files
 
 }
+
+function saveImageToDisk(url,path){
+    var fullUrl =url
+    console.log("dans la fonction save")
+    var localPath = fs.createWriteStream(path)
+    var request =http.get(fullUrl, function(response){
+        console.log(response)
+        response.pipe(localPath)
+    })
+}
+
+
+
+
 
 server.listen(3000, 'localhost',() =>{
     console.log('Listening for requests on port 3000');

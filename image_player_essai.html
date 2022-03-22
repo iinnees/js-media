@@ -70,16 +70,34 @@
 
         }
 
+   
 
     </style>
     <body>
         <div class="slider">
             <div class="slides">
             
-                <div id="canvas">
+                <figure id="canvas">
                   <img src= "" id="imgId">
                    <!--<img src="images/3.jpg" alt="">-->
         
+                </figure>
+                <div class="filter" id="filter">
+                    <label for="blur">Blur</label>
+                    <input type="range" min="0" max="200" value="0" step="0.1"
+                    id="blur">
+                </div>
+                <div class="filter" id="filter">
+                    <label for="contrast">Contrast</label>
+                    <input type="range" min="0" max="200" value="100" id="contrast">
+                </div>
+                <div class="filter" id="filter">
+                    <label for="hue-rotate">Hue-rotate</label>
+                    <input type="range" min="0" max="360" value="0" id="hue-rotate">
+                </div> 
+                <div class="filter" id="filter">
+                    <label for="sepia">Sepia</label>
+                    <input type="range" min="0" max="100" value="0" id="sepia">
                 </div>
                 
                 
@@ -87,6 +105,9 @@
 
             </div>
             <div class="navigation-manuel">
+                <!--<input type="button" value="next">
+                <input type="button" value="back">
+                 -->
                 <button value="Next" id="next" class="button">
                     <span class="button_icon">
                         <ion-icon name="arrow-back-outline"></ion-icon>
@@ -98,9 +119,16 @@
                     </span>
                     
                 </button>
+                <button value="Save Image" id="save" >
+                    Save Image
+                </button>
                
             </div>
-
+            <!--<div class="navigation-automatique">
+                <button value="Start" id="start" >Start</button>
+                <button value="Stop" id="stop" >Stop</button>
+               
+            </div>-->
 
         </div>
 
@@ -153,21 +181,14 @@
                 console.log('nb image emitted : '+nb);
             });
 
-            //Ajout evenement boutton start
-            document.getElementById("start").addEventListener('click', function (e) {
-            console.log('Start button clicked');
-
-            socket.emit('sendlist', nb)
-            console.log('send request emitted : '+nb);
-           
-
-            var iter=0;
-                while(iter<5){
-                    setTimeout(Animation,5000);
-                    iter++;
-                }    
-
+            //Ajout evenement boutton save
+            document.getElementById("save").addEventListener('click', function (e) {
+                console.log('save button clicked');
+                var url_src= document.getElementById("imgId" ).src
+                socket.emit('save', url_src)
+                console.log('ordre de sauvegarde emitted : '+nb);
             });
+
 
             function Animation(){
                 for(img in list_img ){
@@ -177,6 +198,30 @@
                    
                 
                 }
+            }
+
+
+            
+            let filterA=document.getElementById("blur")
+            let filterB=document.getElementById("contrast")
+            let filterC=document.getElementById("hue-rotate")
+            let filterD=document.getElementById("sepia")
+
+            let image = document.getElementById("imgId")
+            console.log(image)
+   
+
+            let sliders = document.querySelectorAll("input");
+            console.log(sliders)
+            sliders.forEach(slider =>{
+                slider.addEventListener('input', addFilter);
+                console.log("dans foreach")
+            })
+            function addFilter(){
+                
+                image.style.filter =`blur(${filterA.value}px) contrast(${filterB.value}%) hue-rotate(${filterC.value}deg) sepia(${filterD.value}%)`;
+                console.log(image.style.filter);
+                console.log("dans la fonction")
             }
 
             
