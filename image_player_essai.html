@@ -9,65 +9,103 @@
     </head>
     <style>
         body{
-            background-image: url("images/fond_cor.png");
+            background-color: #171717;
+            }
+        .slides{
+            border: 7px solid #252525;
+            display: grid;
+            grid-template-columns: 3fr 1fr ;
             }
         #canvas {
-            width: 550px;
-            height: 500px;
-            background-color: rgb(189, 136, 22);
+            border: 7px solid #252525;
+            background-color: #171717;
             border-radius: 5%;
-            margin-left: 400px;
-            margin-top: 80px;
+            margin: 30px;
             }
+        .gp_filter{
+            margin: 15px;
+            padding-left: 40px;
+            padding-top: 20px;
+            border: 1px solid #252525;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .filter label{
+           color: #babcbc;
+        }
         #imgId{
-            width: 540px;
-            height: 490px;
+            width: 900px;
+            height: 450px;
             border-radius: 5%;
             text-align:center;
-            padding-top: 5px;
-            margin:auto;
-            margin-top: 5px;
+            padding: 10px;
+
             display:flex;
 
         }   
+        .navigation-manuel{
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #252525;
+            display: flex;
+            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 10fr ;
+            
+
+        }
         .button{
             display: inline-flex;
-            height: 45px;
-            width: 45px;
-            border-radius: 30px;
-            padding: 0;
-            background: white;
-            outline: none;
-            border: none;
+            /*height: 30x;*/
+            border-radius: 3px;
+            background: #252525;
+            border: 0.5px solid #babcbc;
+            text-align:center;
             overflow: hidden;
             font-family: 'Quicksand',sans-serif;
-            font-size: 16px;
-            font-weight: 500;
             cursor: pointer;
        
             
         } 
         .button:hover{
-            background:rgb(90, 88, 88) ;
+            background:#babcbc ;
         }
         .button:active{
-            background: rgb(189, 136, 22);;
+            background: #171717;
         }
         .button_icon{
-            align-items: center;
-            padding: 8px;
-            background-color: rgba(43, 33, 13, 0.253);;
-            font-size: 1.8em;
+            margin: 2px;
+            padding-right: 8px;
+            padding-left: 2px;
+            color: #babcbc;
         }
-        #next{
-            margin-right: 235px;
-            margin-left: 500px;
-            margin-top: 5px;
-
+        .button_text{
+            padding: 3px;
+            font-size:12px;
+            color: #babcbc;
         }
-        #back{
-            margin-top: 5px;
 
+        .ensemble_btn{
+            background-color: #252525;
+            padding-left: 9px;
+            padding-top: 5px;
+            padding-bottom: 3px;
+            width: 260px;
+            height: 28px;
+            
+            
+        }
+        .img_pl{
+            color: #babcbc;
+            text-align: center;
+            font-size: bold;
+            font-size: 15px;
+            padding: 5px;
+            margin-left: 5px;
+            width: 90px;
+            height: 25px;
+            background-color: #252525;
         }
 
    
@@ -79,56 +117,58 @@
             
                 <figure id="canvas">
                   <img src= "" id="imgId">
-                   <!--<img src="images/3.jpg" alt="">-->
-        
+
                 </figure>
-                <div class="filter" id="filter">
-                    <label for="blur">Blur</label>
-                    <input type="range" min="0" max="200" value="0" step="0.1"
-                    id="blur">
+                <div class="gp_filter">
+                    <div class="filter" id="filter">
+                        <label for="blur">Blur</label>
+                        <input type="range" min="0" max="200" value="0" step="0.1"
+                        id="blur">
+                    </div>
+                    <div class="filter" id="filter">
+                        <label for="contrast">Contrast</label>
+                        <input type="range" min="0" max="200" value="100" id="contrast">
+                    </div>
+                    <div class="filter" id="filter">
+                        <label for="hue-rotate">Hue-rotate</label>
+                        <input type="range" min="0" max="360" value="0" id="hue-rotate">
+                    </div> 
+                    <div class="filter" id="filter">
+                        <label for="sepia">Sepia</label>
+                        <input type="range" min="0" max="100" value="0" id="sepia">
+                    </div>
                 </div>
-                <div class="filter" id="filter">
-                    <label for="contrast">Contrast</label>
-                    <input type="range" min="0" max="200" value="100" id="contrast">
-                </div>
-                <div class="filter" id="filter">
-                    <label for="hue-rotate">Hue-rotate</label>
-                    <input type="range" min="0" max="360" value="0" id="hue-rotate">
-                </div> 
-                <div class="filter" id="filter">
-                    <label for="sepia">Sepia</label>
-                    <input type="range" min="0" max="100" value="0" id="sepia">
-                </div>
+
                 
                 
              
 
             </div>
             <div class="navigation-manuel">
-                <!--<input type="button" value="next">
-                <input type="button" value="back">
-                 -->
-                <button value="Next" id="next" class="button">
-                    <span class="button_icon">
-                        <ion-icon name="arrow-back-outline"></ion-icon>
-                    </span>
-                </button>
-                <button value="Back" id="back" class="button">
-                    <span class="button_icon">
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </span>
-                    
-                </button>
-                <button value="Save Image" id="save" >
-                    Save Image
-                </button>
+                <span class="img_pl">Image Player</span>
+                <div class="ensemble_btn">
+                    <button value="Next" id="next" class="button">
+                        <span class="button_icon">
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </span>
+                        <span class="button_text">Next</span>
+                    </button>
+                    <button value="Back" id="back" class="button">
+                        <span class="button_icon">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </span>
+                        <span class="button_text">Previous</span>
+                        
+                    </button>
+                    <button value="Save Image" id="save" class="button">
+                        <span class="button_icon">
+                            <ion-icon name="download-outline"></ion-icon>
+                        </span>
+                        <span class="button_text">Save</span>
+                    </button>
+                </div>
                
             </div>
-            <!--<div class="navigation-automatique">
-                <button value="Start" id="start" >Start</button>
-                <button value="Stop" id="stop" >Stop</button>
-               
-            </div>-->
 
         </div>
 
@@ -143,7 +183,7 @@
             var list_img // la liste des images
             socket.on('hello', function (data) { // réception 'hello'
                 console.log('le premier socket arrive ');
-                document.getElementById("imgId" ).src = "images/1.png"
+                document.getElementById("imgId" ).src = "images/1.jpg"
             });
 
             socket.on('src', (arg) => {
