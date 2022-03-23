@@ -7,7 +7,7 @@ const server =require('http').Server(app)
 const io =require('socket.io')(server)
 
 var number = 1;
-var img_src ="images/1.png";
+var img_src ="images/1.jpg";
 console.log(number+' image')
 
 io.sockets.on('connection', function (socket) {
